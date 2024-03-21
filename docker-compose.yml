@@ -1,0 +1,28 @@
+version: "3"
+
+volumes:
+  database:
+
+services:
+
+  sql_database:
+    build: ./sql_database
+    container_name: sql_database
+    ports:
+      - '8000:8000'
+    environment:
+      - LOCAL_IP=0.0.0.0
+      - PORT=8000
+    volumes:
+      - database:/app/data
+
+  python_client: 
+    build: ./python_client
+    container_name: python_client
+    depends_on:
+      - sql_database
+    environment:
+      - DB_IP=server
+      - DB_PORT=8000
+    stdin_open: true
+    tty: true
