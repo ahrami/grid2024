@@ -1,6 +1,4 @@
-# GRID and cloud technologies 2024
-
-## Task 1
+# Task 1
 
 Set up a network of 2 Docker containers:
 
