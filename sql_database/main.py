@@ -41,8 +41,8 @@ while(True):
         try:
             data = recvall(conn)
             if not data: 
-                print('No valid data recieved, skipping')
-                continue
+                print('No valid data recieved, dropping connection')
+                break
             try:
                 data = json.loads(data)
             except ValueError as e:

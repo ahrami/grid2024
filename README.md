@@ -19,5 +19,5 @@ You must demonstrate the ability to query the container1 DB from container2. Dat
    ```
 2. In the repo directory run
    ```sh
-   docker-compose up
+   docker-compose up --build --detach
    ```
