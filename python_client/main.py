@@ -32,6 +32,8 @@ while(True):
         print('Could not connect, waiting for 1 second')
         time.sleep(1)
 
+print('Type "exit" to stop the client and free the connection')
+
 def execute(query):
     data = { "query" : query }
     data = json.dumps(data)

@@ -21,3 +21,11 @@ You must demonstrate the ability to query the container1 DB from container2. Dat
    ```sh
    docker-compose up --build --detach
    ```
+3. Attach the client
+   ```sh
+   docker attach --detach-keys='ctrl-c' python_client
+   ```
+4. Open another terminal and log the database
+   ```sh
+   docker logs --follow sql_database
+   ```
