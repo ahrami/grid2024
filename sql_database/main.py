@@ -41,9 +41,13 @@ while(True):
         try:
             data = recvall(conn)
             if not data: 
-                print('No data recieved, dropping connection')
-                break
-            data = json.loads(data)
+                print('No valid data recieved, skipping')
+                continue
+            try:
+                data = json.loads(data)
+            except ValueError as e:
+                print('Recieved an invalid json, skipping')
+                continue
             query = data['query']
             print('executing:', query)
             res, err = db1.execute(query)

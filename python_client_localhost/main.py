@@ -3,8 +3,8 @@ import time
 import json
 import os
 
-IP = os.getenv('DB_IP')
-PORT = int(os.getenv('DB_PORT'))
+IP = 'localhost'
+PORT = 8000
 BUFFER_SIZE = 16
 
 EOF_CHAR = bytes('\0', 'utf-8')
