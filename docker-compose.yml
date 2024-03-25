@@ -22,7 +22,7 @@ services:
     depends_on:
       - sql_database
     environment:
-      - DB_IP=server
+      - DB_IP=sql_database
       - DB_PORT=8000
     stdin_open: true
     tty: true
