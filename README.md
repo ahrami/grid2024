@@ -46,7 +46,7 @@ You must demonstrate the ability to query the container1 DB from container2. Dat
    ```
 2. Add values to the table
    ```sql
-   insert into example_table values (1, 'some_data_1'), (2, 'some_data_2'),  (3, 'some_data_2')
+   insert into example_table(data) values ('example_data_1'), ('example_data_2'),  ('example_data_3')
    ```
 3. Retrieve data from the table
    ```sql
