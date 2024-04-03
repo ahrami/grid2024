@@ -2,12 +2,10 @@
 
 Set up a network of 2 Docker containers:
 
-- One Hosts the database (SQLite or else)
-- Other is your entry point
+- First hosts a database
+- Second is the entry point
 
 You must demonstrate the ability to query the container1 DB from container2. Data in the SQLite database must not disappear when you restart the containers!
-
-<b>DoD:</b> GitLab/GitHub repo with Dockerfiles for both containers, docker-compose for the whole system, README file with list of commands to launch and test.
 
 ## To start
 
@@ -34,6 +32,21 @@ You must demonstrate the ability to query the container1 DB from container2. Dat
 - Database container will log every query that comes in
 - The result of query execution will be sent back to client and it will print it oun into the terminal
 - To detach press `ctrl-c` or type `exit` to stop the container
+
+## Example commands
+
+1. Create a table
+   ```sql
+   create table example_table(id integer primary key, data)
+   ```
+2. Add values to the table
+   ```sql
+   insert into example_table values (1, 'some_data_1'), (2, 'some_data_2'),  (3, 'some_data_2')
+   ```
+3. Retrieve data from the table
+   ```sql
+   select * from example_table
+   ```
 
 ## To stop
 
