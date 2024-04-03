@@ -11,17 +11,21 @@ You must demonstrate the ability to query the container1 DB from container2. Dat
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/ahrami/grid2024.git
    ```
-2. In the repo directory run
+2. Go to the repo directory and switch to the task branch
+   ```sh
+   git checkout task_1-basics_of_containerization
+   ```
+3. To build and start run
    ```sh
    docker-compose up --build --detach
    ```
-3. Attach the client container
+4. Attach the client container
    ```sh
    docker attach --detach-keys='ctrl-c' python_client
    ```
-4. Open another terminal and log the database container
+5. Open another terminal and log the database container
    ```sh
    docker logs --follow sql_database
    ```
