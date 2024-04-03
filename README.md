@@ -35,7 +35,8 @@ You must demonstrate the ability to query the container1 DB from container2. Dat
 - Type sqlite queries into the terminal attached to client container 
 - Database container will log every query that comes in
 - The result of query execution will be sent back to client and it will print it oun into the terminal
-- To detach press `ctrl-c` or type `exit` to stop the container
+- To detach client press `ctrl-c` if you used the provided command to attach it. Or you can type `exit` to stop the client
+- Database can only have one connection at any given time. To connect a new client, the other client needs to be stopped
 
 ## Example commands
 
@@ -50,6 +51,13 @@ You must demonstrate the ability to query the container1 DB from container2. Dat
 3. Retrieve data from the table
    ```sql
    select * from example_table
+   ```
+
+## To run the client outside of docker
+
+- On Linux
+   ```sh
+   python3 python_client_localhost/main.py
    ```
 
 ## To stop
