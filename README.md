@@ -1,7 +1,5 @@
 # Task 1
 
-## Task itself
-
 Set up a network of 2 Docker containers:
 
 - One Hosts the database (SQLite or else)
@@ -29,7 +27,21 @@ You must demonstrate the ability to query the container1 DB from container2. Dat
    ```sh
    docker logs --follow sql_database
    ```
-5. To stop and cleanup
+
+## How to use
+
+- Type sqlite queries into the terminal attached to client container 
+- Database container will log every query that comes in
+- The result of query execution will be sent back to client and it will print it oun into the terminal
+- To detach press `ctrl-c` or type `exit` to stop the container
+
+## To stop
+
+- To just stop
    ```sh
-   docker-compose down --rmi local
+   docker-compose down
+   ```
+- To stop and cleanup
+   ```sh
+   docker-compose down --rmi local --volumes
    ```
