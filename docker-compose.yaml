@@ -10,4 +10,4 @@ services:
     build: ./ui
     container_name: ui
     ports:
-      - '5173:5173'
+      - '3000:3000'
