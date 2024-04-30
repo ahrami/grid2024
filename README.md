@@ -28,7 +28,19 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
 
 -
    ```sh
-   kind create cluster --name kind-andyrift
+   kind create cluster --config=kind.config.yaml
+   ```
+
+### Set up kubectl
+
+- Check available contexts
+   ```sh
+   kubectl config get-contexts
+   ```
+
+- Use this project's context
+   ```sh
+   kubectl config use-context kind-kind-andyrift
    ```
 
 ### Build Docker images
@@ -112,8 +124,7 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    
 
 ## Check
-kubectl config get-contexts
-kubectl config use-context kind-kind-andyrift
+
 -
    ```sh
    kubectl cluster-info
@@ -140,8 +151,8 @@ kubectl config use-context kind-kind-andyrift
    ```
 
 
-## To stop
+## Cleanup
 
    ```sh
-   
+   kind delete cluster --name kind-andyrift
    ```
