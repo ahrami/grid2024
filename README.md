@@ -1,13 +1,13 @@
 # Task 2
 
-Deploy a backend-frontend app using Kubernetes. 
+> Deploy a backend-frontend app using Kubernetes. 
+> 
+> - __Backend:__ application that listens to a port and sends some response if a message comes there. Must be replicated.
+> - __Frontend:__ application that sends incoming requests to the backend.
+> 
+> Frontend must have an IP that can be used outside the cluster. Use Kubernetes Services. 
 
-- __Backend:__ application that listens to a port and sends some response if a message comes there. Must be replicated.
-- __Frontend:__ application that sends incoming requests to the backend.
-
-Frontend must have an IP that can be used outside the cluster. Use Kubernetes Services. 
-
-## 1. Set up the repository
+# Set up the repository
 
 1. Clone the repo
    ```sh
@@ -22,21 +22,23 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    git checkout task_2-kubernetes
    ```
 
-## 2. Docker compose way
+# Docker compose
 
 - Start
    ```sh
    docker compose up --build --detach
    ```
+   
+- Access the website at: `http://localhost/`
 
 - Stop and cleanup
    ```sh
    docker compose down --rmi local
    ```
 
-## 3. Kubernetes way
+# Kubernetes
 
-### Set up kind
+### Create cluster using kind
 
 -
    ```sh
@@ -57,25 +59,26 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
 
 ### Build docker images
 
-1.
+- __Backend__
    ```sh
    docker build -t andyrift-backend:latest ./backend
    ```
-2.
+
+- __UI__
    ```sh
    docker build -t andyrift-ui:latest ./ui
    ```
-3.
+
+- __Nginx__
    ```sh
    docker build -t andyrift-nginx:latest ./nginx
    ```
 
-### Check docker images
-
--
-   ```sh
-   docker image ls
-   ```
+-  
+   > Check docker images<br>
+   >   ```sh
+   >   docker image ls
+   >   ```
 
 ### Load docker images into the cluster
 
@@ -84,7 +87,7 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    kind load docker-image andyrift-backend:latest andyrift-ui:latest andyrift-nginx:latest --name kind-andyrift
    ```
 
-   > check if the images are present<br>
+   > Sheck if the images are present<br>
    > ```sh
    > docker exec -it kind-andyrift-control-plane crictl images
    > ```
@@ -138,7 +141,7 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
 Access the website at:
 
  - `http://localhost/`
- - `http://{control-plane-ip}:30000/` _(check the previous chapter "Check for vital signs")_
+ - `http://{control-plane-ip}:30000/` _(check the previous chapter: "Check for vital signs")_
 
 ## Cleanup
 
