@@ -61,6 +61,11 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
 
 ### apply backend manifests
 
+-
+   ```sh
+   kubectl apply -f backend-deployment.yaml -f backend-service.yaml
+   ```
+
 1.
    ```sh
    kubectl apply -f backend-deployment.yaml
@@ -73,9 +78,14 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
 
 ### apply ui manifests
 
+-
+   ```sh
+   kubectl apply -f ui-deployment.yaml -f ui-service.yaml
+   ```
+
 1.
    ```sh
-   kubectl apply -f ui-deployment.yaml
+   kubectl apply -f ui-deployment.yaml 
    ```
 
 2.
@@ -84,6 +94,11 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    ```
 
 ### apply nginx manifests
+
+-
+   ```sh
+   kubectl apply -f nginx-deployment.yaml -f nginx-service.yaml
+   ```
 
 1.
    ```sh
@@ -95,6 +110,35 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    kubectl apply -f nginx-service.yaml
    ```
    
+
+## Check
+kubectl config get-contexts
+kubectl config use-context kind-kind-andyrift
+-
+   ```sh
+   kubectl cluster-info
+   ```
+
+-
+   ```sh
+   kubectl get nodes
+   ```
+
+-
+   ```sh
+   kubectl get services
+   ```
+
+-
+   ```sh
+   kubectl get deployments
+   ```
+
+-
+   ```sh
+   kubectl get pods
+   ```
+
 
 ## To stop
 
