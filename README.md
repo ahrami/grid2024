@@ -28,7 +28,7 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
 
 -
    ```sh
-   kind create cluster --config=kind.config.yaml
+   kind create cluster --config=kind-config.yaml
    ```
 
 ### Set up kubectl
@@ -78,16 +78,6 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    kubectl apply -f backend-deployment.yaml -f backend-service.yaml
    ```
 
-1.
-   ```sh
-   kubectl apply -f backend-deployment.yaml
-   ```
-
-2.
-   ```sh
-   kubectl apply -f backend-service.yaml
-   ```
-
 ### apply ui manifests
 
 -
@@ -95,31 +85,11 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    kubectl apply -f ui-deployment.yaml -f ui-service.yaml
    ```
 
-1.
-   ```sh
-   kubectl apply -f ui-deployment.yaml 
-   ```
-
-2.
-   ```sh
-   kubectl apply -f ui-service.yaml
-   ```
-
 ### apply nginx manifests
 
 -
    ```sh
    kubectl apply -f nginx-deployment.yaml -f nginx-service.yaml
-   ```
-
-1.
-   ```sh
-   kubectl apply -f nginx-deployment.yaml
-   ```
-
-2.
-   ```sh
-   kubectl apply -f nginx-service.yaml
    ```
    
 
@@ -153,6 +123,12 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
 
 ## Cleanup
 
+-
    ```sh
    kind delete cluster --name kind-andyrift
+   ```
+
+-
+   ```sh
+   docker rmi andyrift-backend:latest andyrift-ui:latest andyrift-nginx:latest
    ```
