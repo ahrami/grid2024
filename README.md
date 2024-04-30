@@ -7,7 +7,7 @@ Deploy a backend-frontend app using Kubernetes.
 
 Frontend must have an IP that can be used outside the cluster. Use Kubernetes Services. 
 
-## 0. Set up the repository
+## 1. Set up the repository
 
 1. Clone the repo
    ```sh
@@ -22,7 +22,7 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    git checkout task_2-kubernetes
    ```
 
-## 1. Docker compose way
+## 2. Docker compose way
 
 - Start
    ```sh
@@ -34,7 +34,7 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    docker compose down --rmi local
    ```
 
-## 2. Kubernetes way
+## 3. Kubernetes way
 
 ### Set up kind
 
@@ -84,7 +84,6 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    kind load docker-image andyrift-backend:latest andyrift-ui:latest andyrift-nginx:latest --name kind-andyrift
    ```
 
--
    > check if the images are present<br>
    > ```sh
    > docker exec -it kind-andyrift-control-plane crictl images
@@ -92,17 +91,17 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
 
 ### Apply manifests
 
-- Backend
+- __Backend__
    ```sh
    kubectl apply -f backend-deployment.yaml -f backend-service.yaml
    ```
 
-- UI
+- __UI__
    ```sh
    kubectl apply -f ui-deployment.yaml -f ui-service.yaml
    ```
 
-- Nginx
+- __Nginx__
    ```sh
    kubectl apply -f nginx-deployment.yaml -f nginx-service.yaml
    ``` 
@@ -139,16 +138,16 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
 Access the website at:
 
  - `http://localhost/`
- - `http://{control-plane-ip}:30000/` _(check the previous part)_
+ - `http://{control-plane-ip}:30000/` _(check the previous chapter "Check for vital signs")_
 
 ## Cleanup
-
-- Delete kind k8s cluster
-   ```sh
-   kind delete cluster --name kind-andyrift
-   ```
 
 - Remove docker images
    ```sh
    docker rmi andyrift-backend:latest andyrift-ui:latest andyrift-nginx:latest
+   ```
+
+- Delete kind k8s cluster
+   ```sh
+   kind delete cluster --name kind-andyrift
    ```
