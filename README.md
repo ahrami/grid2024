@@ -59,7 +59,7 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    > docker exec -it kind-andyrift-control-plane crictl images
    > ```
 
-### apply 
+### apply backend manifests
 
 1.
    ```sh
@@ -69,6 +69,30 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
 2.
    ```sh
    kubectl apply -f backend-service.yaml
+   ```
+
+### apply ui manifests
+
+1.
+   ```sh
+   kubectl apply -f ui-deployment.yaml
+   ```
+
+2.
+   ```sh
+   kubectl apply -f ui-service.yaml
+   ```
+
+### apply nginx manifests
+
+1.
+   ```sh
+   kubectl apply -f nginx-deployment.yaml
+   ```
+
+2.
+   ```sh
+   kubectl apply -f nginx-service.yaml
    ```
    
 
