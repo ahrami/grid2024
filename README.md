@@ -14,18 +14,63 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    ```sh
    git clone https://github.com/ahrami/grid2024.git
    ```
-2. Go to the repo directory and switch to the task branch
+2. Go to the repo directory
+   ```sh
+   cd grid2024
+   ```
+3. Switch to the task branch
    ```sh
    git checkout task_2-kubernetes
    ```
-3. To build and start run
+
+
+### Set up kind
+
+-
    ```sh
-   
+   kind create cluster --name kind-andyrift
    ```
 
-## How to use
+### Build Docker images
 
-- idk
+1.
+   ```sh
+   docker build -t andyrift-backend:latest ./backend
+   ```
+2.
+   ```sh
+   docker build -t andyrift-ui:latest ./ui
+   ```
+3.
+   ```sh
+   docker build -t andyrift-nginx:latest ./nginx
+   ```
+
+### Load Docker images into the cluster
+
+-
+   ```sh
+   kind load docker-image andyrift-backend:latest andyrift-ui:latest andyrift-nginx:latest --name kind-andyrift
+   ```
+
+-
+   > check if the images are present<br>
+   > ```sh
+   > docker exec -it kind-andyrift-control-plane crictl images
+   > ```
+
+### apply 
+
+1.
+   ```sh
+   kubectl apply -f backend-deployment.yaml
+   ```
+
+2.
+   ```sh
+   kubectl apply -f backend-service.yaml
+   ```
+   
 
 ## To stop
 
