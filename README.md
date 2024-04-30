@@ -43,7 +43,7 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    kubectl config use-context kind-kind-andyrift
    ```
 
-### Build Docker images
+### Build docker images
 
 1.
    ```sh
@@ -58,7 +58,14 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    docker build -t andyrift-nginx:latest ./nginx
    ```
 
-### Load Docker images into the cluster
+### Check docker images
+
+-
+   ```sh
+   docker image ls
+   ```
+
+### Load docker images into the cluster
 
 -
    ```sh
@@ -71,21 +78,21 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    > docker exec -it kind-andyrift-control-plane crictl images
    > ```
 
-### apply backend manifests
+### Apply backend manifests
 
 -
    ```sh
    kubectl apply -f backend-deployment.yaml -f backend-service.yaml
    ```
 
-### apply ui manifests
+### Apply ui manifests
 
 -
    ```sh
    kubectl apply -f ui-deployment.yaml -f ui-service.yaml
    ```
 
-### apply nginx manifests
+### Apply nginx manifests
 
 -
    ```sh
@@ -93,7 +100,7 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    ```
    
 
-## Check
+## Check vital signs
 
 -
    ```sh
@@ -120,15 +127,18 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    kubectl get pods
    ```
 
+## Access
+
+Access the website on `http://localhost` or 
 
 ## Cleanup
 
--
+- Delete kind k8s cluster
    ```sh
    kind delete cluster --name kind-andyrift
    ```
 
--
+- Remove docker images
    ```sh
    docker rmi andyrift-backend:latest andyrift-ui:latest andyrift-nginx:latest
    ```
