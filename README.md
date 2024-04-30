@@ -7,6 +7,8 @@
 > 
 > Frontend must have an IP that can be used outside the cluster. Use Kubernetes Services. 
 
+_This solution is a little more convoluted than that_
+
 # Set up the repository
 
 1. Clone the repo
