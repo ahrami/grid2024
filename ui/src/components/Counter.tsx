@@ -7,7 +7,9 @@ import { useEffect, useState } from "react"
 //const BACKEND = import.meta.env.VITE_BACKEND_URL + ":" + import.meta.env.VITE_BACKEND_PORT
 //const BACKEND = window.location.protocol + "//" + window.location.hostname + ":" + import.meta.env.VITE_BACKEND_PORT
 //const BACKEND = window.location.protocol + "//" + window.location.hostname + "/api"
-const BACKEND = window.location.origin + "/api"
+//const BACKEND = window.location.origin + "/api"
+
+const BACKEND = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/api"
 
 function Counter() {
   const [count, setCount] = useState<null | number>(null)

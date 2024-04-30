@@ -7,8 +7,7 @@ Deploy a backend-frontend app using Kubernetes.
 
 Frontend must have an IP that can be used outside the cluster. Use Kubernetes Services. 
 
-
-## To start
+## 0. Set up the repository
 
 1. Clone the repo
    ```sh
@@ -23,6 +22,19 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    git checkout task_2-kubernetes
    ```
 
+## 1. Docker compose way
+
+- Start
+   ```sh
+   docker compose up --build --detach
+   ```
+
+- Stop and cleanup
+   ```sh
+   docker compose down --rmi local
+   ```
+
+## 2. Kubernetes way
 
 ### Set up kind
 
@@ -78,58 +90,56 @@ Frontend must have an IP that can be used outside the cluster. Use Kubernetes Se
    > docker exec -it kind-andyrift-control-plane crictl images
    > ```
 
-### Apply backend manifests
+### Apply manifests
 
--
+- Backend
    ```sh
    kubectl apply -f backend-deployment.yaml -f backend-service.yaml
    ```
 
-### Apply ui manifests
-
--
+- UI
    ```sh
    kubectl apply -f ui-deployment.yaml -f ui-service.yaml
    ```
 
-### Apply nginx manifests
-
--
+- Nginx
    ```sh
    kubectl apply -f nginx-deployment.yaml -f nginx-service.yaml
+   ``` 
+
+## Check for vital signs
+
+- List nodes and their ips (from this you can discover control plane ip)
+   ```sh
+   kubectl get nodes -o wide
    ```
-   
 
-## Check vital signs
-
--
+- Cluster info
    ```sh
    kubectl cluster-info
    ```
 
--
-   ```sh
-   kubectl get nodes
-   ```
-
--
+- List services
    ```sh
    kubectl get services
    ```
 
--
+- List deployments
    ```sh
    kubectl get deployments
    ```
 
--
+- List pods
    ```sh
    kubectl get pods
    ```
 
-## Access
+## Access the website
 
-Access the website on `http://localhost` or 
+Access the website at:
+
+ - `http://localhost/`
+ - `http://{control-plane-ip}:30000/` _(check the previous part)_
 
 ## Cleanup
 
